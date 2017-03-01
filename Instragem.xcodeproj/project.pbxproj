@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F4899E31E64878C0088A31E /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4899E21E64878C0088A31E /* LoginController.swift */; };
 		A38C8DEC1E54AE2E00A43A8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38C8DEB1E54AE2E00A43A8F /* AppDelegate.swift */; };
 		A38C8DEE1E54AE2E00A43A8F /* LayoutOneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38C8DED1E54AE2E00A43A8F /* LayoutOneController.swift */; };
 		A38C8DF11E54AE2F00A43A8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A38C8DEF1E54AE2E00A43A8F /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F4899E21E64878C0088A31E /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		A38C8DE81E54AE2E00A43A8F /* Instragem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instragem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38C8DEB1E54AE2E00A43A8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A38C8DED1E54AE2E00A43A8F /* LayoutOneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutOneController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				A38C8DED1E54AE2E00A43A8F /* LayoutOneController.swift */,
 				A38CC8D41E5F449200E423B5 /* ColorPickerController.swift */,
 				A38C8DEF1E54AE2E00A43A8F /* Main.storyboard */,
+				3F4899E21E64878C0088A31E /* LoginController.swift */,
 				A38C8DF51E54AE2F00A43A8F /* Assets.xcassets */,
 				A38C8DF71E54AE2F00A43A8F /* LaunchScreen.storyboard */,
 				A38C8DFA1E54AE2F00A43A8F /* Info.plist */,
@@ -164,6 +167,7 @@
 				A38CC8D51E5F449200E423B5 /* ColorPickerController.swift in Sources */,
 				A38C8DF41E54AE2F00A43A8F /* Instragem.xcdatamodeld in Sources */,
 				A38C8DEC1E54AE2E00A43A8F /* AppDelegate.swift in Sources */,
+				3F4899E31E64878C0088A31E /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
