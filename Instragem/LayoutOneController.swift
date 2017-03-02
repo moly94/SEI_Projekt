@@ -9,6 +9,9 @@
 import UIKit
 
 class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextViewDelegate{
+    
+    
+    
     @IBOutlet var layoutOneView: UIView!
     
     @IBOutlet weak var textView1: UITextView!
@@ -43,6 +46,7 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
     
   let arbitraryValue: Int = 30
    var isFinnish = false
+    var isValid = false
     
     
     
@@ -74,6 +78,7 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -88,15 +93,28 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
         textView1.layer.cornerRadius = 10
         textView2.layer.cornerRadius = 10
         textView3.layer.cornerRadius = 10
+        if(isValid){
+            let defaults = UserDefaults.standard
+            let red = defaults.object(forKey: "Red") as? Float
+            let blue = defaults.object(forKey: "Blue") as? Float
+            let green = defaults.object(forKey: "Green") as? Float
+            
+            pickedImage1.backgroundColor = UIColor(red: CGFloat(red!), green: CGFloat(green!), blue: CGFloat(blue!), alpha: 1.0)
+        }
+
 
        
             }
-    
+    override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+          }
     
     @IBAction func colorPickerAction(_ sender: Any) {
         constraintX.constant = -700
         self.backgroundButton.alpha = 0.0
         self.saveButton.isEnabled = true
+        self.isValid = true;
+       
         
     }
      internal func textViewDidBeginEditing(_ textView: UITextView) {
@@ -301,8 +319,6 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
         //Save it to the camera roll
         UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
     }
-
-
 
 }
 

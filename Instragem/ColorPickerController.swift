@@ -9,6 +9,7 @@
 import UIKit
 
 
+
 class ColorPickerController: UIViewController{
     
     
@@ -33,7 +34,17 @@ class ColorPickerController: UIViewController{
     var blueCol : Float = 0
     
     @IBOutlet weak var constraintX: NSLayoutConstraint!
-     override func viewDidLoad() {
+    
+  
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+       
+    }
+    
+    
+    
+    override func viewDidLoad() {
         self.redSlider.value = 0
         self.greenSlider.value = 0
         self.blueSlider.value = 0
@@ -61,6 +72,13 @@ class ColorPickerController: UIViewController{
     }
     
     @IBAction func addButtonAction(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        defaults.set(redCol, forKey: "Red")
+        defaults.synchronize()
+        defaults.set(greenCol, forKey: "Green")
+        defaults.synchronize()
+        defaults.set(blueCol, forKey: "Blue")
+        defaults.synchronize()
         dismiss(animated: true, completion: nil)
     }
     
@@ -98,11 +116,7 @@ class ColorPickerController: UIViewController{
         blueLabel.text = "Blue: \(roundedBlue)"
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       let destViewController : LayoutOneController = segue.destination as! LayoutOneController
-        destViewController.pickedImage1.backgroundColor = currentColorLabel.backgroundColor
-        
-    }
+   
     
     
     
