@@ -47,6 +47,7 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
   let arbitraryValue: Int = 30
    var isFinnish = false
     var isValid = false
+    let defaults = UserDefaults.standard
     
     
     
@@ -93,20 +94,26 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
         textView1.layer.cornerRadius = 10
         textView2.layer.cornerRadius = 10
         textView3.layer.cornerRadius = 10
-        if(isValid){
-            let defaults = UserDefaults.standard
-            let red = defaults.object(forKey: "Red") as? Float
-            let blue = defaults.object(forKey: "Blue") as? Float
-            let green = defaults.object(forKey: "Green") as? Float
-            
-            pickedImage1.backgroundColor = UIColor(red: CGFloat(red!), green: CGFloat(green!), blue: CGFloat(blue!), alpha: 1.0)
-        }
-
+       
 
        
             }
-    override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
+   
+   
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated) //if(isValid){
+        
+        let red = defaults.object(forKey: "Red") as? Float
+        print("red\(red)")
+        let blue = defaults.object(forKey: "Blue") as? Float
+        print("b\(blue)")
+        let green = defaults.object(forKey: "Green") as? Float
+        print("g\(green)")
+        
+        pickedImage1.backgroundColor = UIColor(red: CGFloat(red!), green: CGFloat(green!), blue: CGFloat(blue!), alpha: 1.0)
+        //  }
+
+        
           }
     
     @IBAction func colorPickerAction(_ sender: Any) {
@@ -268,6 +275,8 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
         textView3.isEditable = true
     }
     
+    
+    
     @IBAction func saveButtonAction(_ sender: UIBarButtonItem) {
         
         let imageData = UIImageJPEGRepresentation(pickedImage1.image!, 0.6)
@@ -319,6 +328,9 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
         //Save it to the camera roll
         UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
     }
-
+    
+ 
 }
+
+
 
