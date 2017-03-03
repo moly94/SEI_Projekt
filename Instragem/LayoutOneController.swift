@@ -12,6 +12,25 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
     
     
     
+    @IBOutlet weak var popPickConstraintX: NSLayoutConstraint!
+    
+    @IBOutlet weak var chosenCol: UILabel!
+    
+    @IBOutlet weak var redLabel: UILabel!
+    
+    @IBOutlet weak var greenLabel: UILabel!
+    
+    @IBOutlet weak var blueLabel: UILabel!
+    
+    @IBOutlet weak var redSlider: UISlider!
+    
+    @IBOutlet weak var greenSlider: UISlider!
+    
+    @IBOutlet weak var blueSlider: UISlider!
+    
+    
+    @IBOutlet weak var colPickerView: UIView!
+    
     @IBOutlet var layoutOneView: UIView!
     
     @IBOutlet weak var textView1: UITextView!
@@ -48,6 +67,11 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
    var isFinnish = false
     var isValid = false
     let defaults = UserDefaults.standard
+    
+    var redCol : Float = 0
+    var greenCol : Float = 0
+    var blueCol : Float = 0
+
     
     
     
@@ -94,36 +118,64 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
         textView1.layer.cornerRadius = 10
         textView2.layer.cornerRadius = 10
         textView3.layer.cornerRadius = 10
+        displayNumbers()
+       chosenCol.layer.cornerRadius = 10
+       chosenCol.layer.masksToBounds = true
+        colPickerView.layer.cornerRadius = 10
        
 
        
             }
-   
-   
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated) //if(isValid){
-        
-        let red = defaults.object(forKey: "Red") as? Float
-        print("red\(red)")
-        let blue = defaults.object(forKey: "Blue") as? Float
-        print("b\(blue)")
-        let green = defaults.object(forKey: "Green") as? Float
-        print("g\(green)")
-        
-        pickedImage1.backgroundColor = UIColor(red: CGFloat(red!), green: CGFloat(green!), blue: CGFloat(blue!), alpha: 1.0)
-        //  }
-
-        
-          }
     
-    @IBAction func colorPickerAction(_ sender: Any) {
+    
+    @IBAction func redSliderAction(_ sender: Any) {
+        changeColor()
+    }
+    
+    
+    @IBAction func greenSliderAction(_ sender: Any) {
+         changeColor()
+    }
+   
+   
+    @IBAction func blueSliderAction(_ sender: Any) {
+         changeColor()
+    }
+  
+    @IBAction func colPickerAction(_ sender: Any) {
+        popPickConstraintX.constant = 0
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
         constraintX.constant = -700
-        self.backgroundButton.alpha = 0.0
-        self.saveButton.isEnabled = true
-        self.isValid = true;
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
+        self.backgroundButton.alpha = 0.5
+        self.saveButton.isEnabled = false
        
+    }
+    
+    
+    @IBAction func addColorAction(_ sender: Any) {
+        self.saveButton.isEnabled = true
+        self.backgroundButton.alpha = 0.0
+        popPickConstraintX.constant = 700
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
+        if whichButton == 1 {
+            pickedImage1.backgroundColor = chosenCol.backgroundColor
+        }else if whichButton == 2 {
+            pickedImage2.backgroundColor = chosenCol.backgroundColor
+        }else if whichButton == 3 {
+            pickedImage3.backgroundColor = chosenCol.backgroundColor
+        }else if whichButton == 4 {
+            pickedImage4.backgroundColor = chosenCol.backgroundColor
+        }
         
     }
+    
      internal func textViewDidBeginEditing(_ textView: UITextView) {
         if textView == textView1{
             textView1!.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
@@ -186,12 +238,18 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
  
     @IBAction func closePopup(_ sender: Any) {
         self.saveButton.isEnabled = true
+         self.backgroundButton.alpha = 0.0
+        if constraintX.constant == 0 {
         constraintX.constant = -700
-        self.backgroundButton.alpha = 0.0
-        UIView.animate(withDuration: 0.1, animations: {
+       UIView.animate(withDuration: 0.1, animations: {
             self.view.layoutIfNeeded()
         })
-
+        }else if popPickConstraintX.constant == 0 {
+        popPickConstraintX.constant = 700
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
+        }
         
     }
     
@@ -283,6 +341,28 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
         let compressedJEPGImage = UIImage(data: imageData!)
         UIImageWriteToSavedPhotosAlbum(compressedJEPGImage!, nil, nil, nil)
     }
+    
+    
+    func changeColorOfLabel() {
+        chosenCol.backgroundColor = UIColor(red: CGFloat(redCol), green: CGFloat(greenCol), blue: CGFloat(blueCol), alpha: 1.0)
+        displayNumbers()
+    }
+    func changeColor(){
+        redCol = redSlider.value
+        greenCol = greenSlider.value
+        blueCol = blueSlider.value
+        changeColorOfLabel()
+    }
+    func displayNumbers(){
+        let roundedRed = String(format: "%0.0f", (redCol*255))
+        let roundedGreen = String(format: "%0.0f", (greenCol*255))
+        let roundedBlue = String(format: "%0.0f", (blueCol*255))
+        
+        redLabel.text = "Red: \(roundedRed)"
+        greenLabel.text = "Green: \(roundedGreen)"
+        blueLabel.text = "Blue: \(roundedBlue)"
+    }
+
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         if whichButton == 1{

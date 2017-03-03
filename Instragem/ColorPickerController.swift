@@ -72,15 +72,7 @@ class ColorPickerController: UIViewController{
     }
     
     @IBAction func addButtonAction(_ sender: Any) {
-        let defaults = UserDefaults.standard
-        defaults.set(redCol, forKey: "Red")
-        defaults.synchronize()
-        defaults.set(greenCol, forKey: "Green")
-        defaults.synchronize()
-        defaults.set(blueCol, forKey: "Blue")
-        defaults.synchronize()
-        dismiss(animated: true, completion: nil)
-    }
+          }
     
     
     @IBAction func redSliderAction(_ sender: Any) {
