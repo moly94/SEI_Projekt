@@ -15,6 +15,7 @@
 		A38C8DF61E54AE2F00A43A8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A38C8DF51E54AE2F00A43A8F /* Assets.xcassets */; };
 		A38C8DF91E54AE2F00A43A8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A38C8DF71E54AE2F00A43A8F /* LaunchScreen.storyboard */; };
 		A38CC8D51E5F449200E423B5 /* ColorPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CC8D41E5F449200E423B5 /* ColorPickerController.swift */; };
+		A38CC8D71E69FCC500E423B5 /* LayoutTwoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CC8D61E69FCC500E423B5 /* LayoutTwoController.swift */; };
 		A3A8C8891E5C885D00FC57D5 /* addButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A8C8881E5C885D00FC57D5 /* addButton.png */; };
 		A3AA6C1B1E5626E900BF2481 /* cam.png in Resources */ = {isa = PBXBuildFile; fileRef = A3AA6C191E5626E900BF2481 /* cam.png */; };
 		A3AA6C1C1E5626E900BF2481 /* lib.png in Resources */ = {isa = PBXBuildFile; fileRef = A3AA6C1A1E5626E900BF2481 /* lib.png */; };
@@ -32,6 +33,7 @@
 		A38C8DF81E54AE2F00A43A8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A38C8DFA1E54AE2F00A43A8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A38CC8D41E5F449200E423B5 /* ColorPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerController.swift; sourceTree = "<group>"; };
+		A38CC8D61E69FCC500E423B5 /* LayoutTwoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutTwoController.swift; sourceTree = "<group>"; };
 		A3A8C8881E5C885D00FC57D5 /* addButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addButton.png; path = ../../../../Downloads/addButton.png; sourceTree = "<group>"; };
 		A3AA6C191E5626E900BF2481 /* cam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cam.png; sourceTree = "<group>"; };
 		A3AA6C1A1E5626E900BF2481 /* lib.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lib.png; sourceTree = "<group>"; };
@@ -69,8 +71,9 @@
 			isa = PBXGroup;
 			children = (
 				A38C8DEB1E54AE2E00A43A8F /* AppDelegate.swift */,
-				A38C8DED1E54AE2E00A43A8F /* LayoutOneController.swift */,
 				A38CC8D41E5F449200E423B5 /* ColorPickerController.swift */,
+				A38C8DED1E54AE2E00A43A8F /* LayoutOneController.swift */,
+				A38CC8D61E69FCC500E423B5 /* LayoutTwoController.swift */,
 				A38C8DEF1E54AE2E00A43A8F /* Main.storyboard */,
 				3F4899E21E64878C0088A31E /* LoginController.swift */,
 				A38C8DF51E54AE2F00A43A8F /* Assets.xcassets */,
@@ -165,6 +168,7 @@
 			files = (
 				A38C8DEE1E54AE2E00A43A8F /* LayoutOneController.swift in Sources */,
 				A38CC8D51E5F449200E423B5 /* ColorPickerController.swift in Sources */,
+				A38CC8D71E69FCC500E423B5 /* LayoutTwoController.swift in Sources */,
 				A38C8DF41E54AE2F00A43A8F /* Instragem.xcdatamodeld in Sources */,
 				A38C8DEC1E54AE2E00A43A8F /* AppDelegate.swift in Sources */,
 				3F4899E31E64878C0088A31E /* LoginController.swift in Sources */,
