@@ -91,6 +91,7 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
         pickedImage3.layer.cornerRadius = 10
         pickedImage3.clipsToBounds = true
         pickedImage4.clipsToBounds = true
+
         popupView.layer.cornerRadius = 10
         textView1.textAlignment = NSTextAlignment.center
         textView1.font = UIFont.boldSystemFont(ofSize: 33.0)

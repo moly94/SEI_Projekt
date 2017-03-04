@@ -17,6 +17,7 @@
 		A38C8DF91E54AE2F00A43A8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A38C8DF71E54AE2F00A43A8F /* LaunchScreen.storyboard */; };
 		A38CC8D51E5F449200E423B5 /* ColorPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CC8D41E5F449200E423B5 /* ColorPickerController.swift */; };
 		A38CC8D71E69FCC500E423B5 /* LayoutTwoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CC8D61E69FCC500E423B5 /* LayoutTwoController.swift */; };
+		A38CC8D91E6B2F8A00E423B5 /* LayoutThreeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CC8D81E6B2F8A00E423B5 /* LayoutThreeController.swift */; };
 		A3A8C8891E5C885D00FC57D5 /* addButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A8C8881E5C885D00FC57D5 /* addButton.png */; };
 		A3AA6C1B1E5626E900BF2481 /* cam.png in Resources */ = {isa = PBXBuildFile; fileRef = A3AA6C191E5626E900BF2481 /* cam.png */; };
 		A3AA6C1C1E5626E900BF2481 /* lib.png in Resources */ = {isa = PBXBuildFile; fileRef = A3AA6C1A1E5626E900BF2481 /* lib.png */; };
@@ -38,6 +39,7 @@
 		A38C8DFA1E54AE2F00A43A8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A38CC8D41E5F449200E423B5 /* ColorPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerController.swift; sourceTree = "<group>"; };
 		A38CC8D61E69FCC500E423B5 /* LayoutTwoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutTwoController.swift; sourceTree = "<group>"; };
+		A38CC8D81E6B2F8A00E423B5 /* LayoutThreeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutThreeController.swift; sourceTree = "<group>"; };
 		A3A8C8881E5C885D00FC57D5 /* addButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addButton.png; path = ../../../../Downloads/addButton.png; sourceTree = "<group>"; };
 		A3AA6C191E5626E900BF2481 /* cam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cam.png; sourceTree = "<group>"; };
 		A3AA6C1A1E5626E900BF2481 /* lib.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lib.png; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				A38C8DED1E54AE2E00A43A8F /* LayoutOneController.swift */,
 				A38CC8D61E69FCC500E423B5 /* LayoutTwoController.swift */,
 				A38C8DEF1E54AE2E00A43A8F /* Main.storyboard */,
+				A38CC8D81E6B2F8A00E423B5 /* LayoutThreeController.swift */,
 				3F4899E21E64878C0088A31E /* LoginController.swift */,
 				3FBF046E1E6AFB790038975E /* KeychainWrapper.h */,
 				3FBF046F1E6AFB790038975E /* KeychainWrapper.m */,
@@ -127,6 +130,7 @@
 				TargetAttributes = {
 					A38C8DE71E54AE2E00A43A8F = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = FZ77Q9WKM2;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -172,6 +176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A38CC8D91E6B2F8A00E423B5 /* LayoutThreeController.swift in Sources */,
 				A38C8DEE1E54AE2E00A43A8F /* LayoutOneController.swift in Sources */,
 				A38CC8D51E5F449200E423B5 /* ColorPickerController.swift in Sources */,
 				A38CC8D71E69FCC500E423B5 /* LayoutTwoController.swift in Sources */,
@@ -302,7 +307,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = FZ77Q9WKM2;
 				INFOPLIST_FILE = Instragem/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = luis.sei.Instragem;
@@ -318,7 +323,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = FZ77Q9WKM2;
 				INFOPLIST_FILE = Instragem/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = luis.sei.Instragem;
