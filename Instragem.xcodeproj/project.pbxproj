@@ -19,7 +19,6 @@
 		A38CC8D71E69FCC500E423B5 /* LayoutTwoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CC8D61E69FCC500E423B5 /* LayoutTwoController.swift */; };
 		A38CC8D91E6B2F8A00E423B5 /* LayoutThreeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CC8D81E6B2F8A00E423B5 /* LayoutThreeController.swift */; };
 		A38CC8DB1E6C2C5700E423B5 /* OverviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38CC8DA1E6C2C5700E423B5 /* OverviewController.swift */; };
-		A3A8C8891E5C885D00FC57D5 /* addButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A8C8881E5C885D00FC57D5 /* addButton.png */; };
 		A3AA6C1B1E5626E900BF2481 /* cam.png in Resources */ = {isa = PBXBuildFile; fileRef = A3AA6C191E5626E900BF2481 /* cam.png */; };
 		A3AA6C1C1E5626E900BF2481 /* lib.png in Resources */ = {isa = PBXBuildFile; fileRef = A3AA6C1A1E5626E900BF2481 /* lib.png */; };
 		A3AA6C1E1E5741CB00BF2481 /* col.png in Resources */ = {isa = PBXBuildFile; fileRef = A3AA6C1D1E5741CB00BF2481 /* col.png */; };
@@ -42,7 +41,6 @@
 		A38CC8D61E69FCC500E423B5 /* LayoutTwoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutTwoController.swift; sourceTree = "<group>"; };
 		A38CC8D81E6B2F8A00E423B5 /* LayoutThreeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutThreeController.swift; sourceTree = "<group>"; };
 		A38CC8DA1E6C2C5700E423B5 /* OverviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewController.swift; sourceTree = "<group>"; };
-		A3A8C8881E5C885D00FC57D5 /* addButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addButton.png; path = ../../../../Downloads/addButton.png; sourceTree = "<group>"; };
 		A3AA6C191E5626E900BF2481 /* cam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cam.png; sourceTree = "<group>"; };
 		A3AA6C1A1E5626E900BF2481 /* lib.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lib.png; sourceTree = "<group>"; };
 		A3AA6C1D1E5741CB00BF2481 /* col.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = col.png; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 				A38C8DF71E54AE2F00A43A8F /* LaunchScreen.storyboard */,
 				A38C8DFA1E54AE2F00A43A8F /* Info.plist */,
 				A38C8DF21E54AE2F00A43A8F /* Instragem.xcdatamodeld */,
-				A3A8C8881E5C885D00FC57D5 /* addButton.png */,
 				A3AA6C1D1E5741CB00BF2481 /* col.png */,
 				A3AA6C191E5626E900BF2481 /* cam.png */,
 				A3AA6C1A1E5626E900BF2481 /* lib.png */,
@@ -165,7 +162,6 @@
 				A3AA6C1E1E5741CB00BF2481 /* col.png in Resources */,
 				A38C8DF91E54AE2F00A43A8F /* LaunchScreen.storyboard in Resources */,
 				A3AA6C1C1E5626E900BF2481 /* lib.png in Resources */,
-				A3A8C8891E5C885D00FC57D5 /* addButton.png in Resources */,
 				A38C8DF61E54AE2F00A43A8F /* Assets.xcassets in Resources */,
 				A38C8DF11E54AE2F00A43A8F /* Main.storyboard in Resources */,
 				A3AA6C1B1E5626E900BF2481 /* cam.png in Resources */,

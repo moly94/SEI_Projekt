@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 
 class LoginController: UIViewController {
     
@@ -27,6 +28,12 @@ class LoginController: UIViewController {
     
     
     @IBOutlet weak var txtPassword: UITextField!
+    
+    
+    var isGrantedNotificationAccess:Bool = false
+    
+    let center = UNUserNotificationCenter.current()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a
@@ -44,6 +51,27 @@ class LoginController: UIViewController {
             txtUsername.text = storedUsername as String
         }
         
+        
+        // Swift
+        let options: UNAuthorizationOptions = [.alert, .sound];
+        
+        // Swift
+        center.requestAuthorization(options: options) {
+            (granted, error) in
+            if !granted {
+                print("Something went wrong")
+            }
+        }
+        
+        
+        center.getNotificationSettings { (settings) in
+            if settings.authorizationStatus != .authorized {
+                // Notifications not allowed
+            }
+        }
+        
+        
+        
     }
     override func viewDidLayoutSubviews() {
         if txtPassword.hasText {
@@ -54,6 +82,7 @@ class LoginController: UIViewController {
 
     
     @IBAction func btnLogin(_ sender: AnyObject) {
+        sendNotification()
         //username or password empty, display alert
         if (txtUsername.text == "" || txtPassword.text == "") {
             let alertView = UIAlertController(title: "Login Problem",
@@ -110,6 +139,53 @@ class LoginController: UIViewController {
         } else {
             return false
         }
+    }
+    
+    
+    
+    
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func sendNotification() {
+        if isGrantedNotificationAccess {
+            let content = UNMutableNotificationContent()
+            content.title = "Don't forget"
+            content.body = "Use Instragem"
+            content.sound = UNNotificationSound.default()
+            
+            //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 15,
+             //                                               repeats: true)
+            let date = Date(timeIntervalSinceNow: 3600)
+            
+            let triggerDaily = Calendar.current.dateComponents([.hour,.minute,.second,], from: date)
+
+            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
+            
+            // Swift
+            let identifier = "UYLLocalNotification"
+            let request = UNNotificationRequest(identifier: identifier,
+                                                content: content, trigger: trigger)
+            center.add(request, withCompletionHandler: { (error) in
+                if let error = error {
+                    // Something went wrong
+                }
+            })
+            
+            // Swift
+            let category = UNNotificationCategory(identifier: "UYLReminderCategory",
+                                                  actions: [],
+                                                  intentIdentifiers: [], options: [])
+            
+            center.setNotificationCategories([category])
+            content.categoryIdentifier = "UYLReminderCategory"
+            
+        }
+        
     }
     
 }
