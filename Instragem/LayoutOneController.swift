@@ -98,8 +98,9 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
         pickedImage4.clipsToBounds = true
 
         popupView.layer.cornerRadius = 10
+        let variableFontSize : CGFloat = textView1.frame.size.height * 0.1
         textView1.textAlignment = NSTextAlignment.center
-        textView1.font = UIFont.boldSystemFont(ofSize: 40.0)
+        textView1.font = UIFont.boldSystemFont(ofSize: variableFontSize)
         textView2.font = UIFont.boldSystemFont(ofSize: 40.0)
         textView3.font = UIFont.boldSystemFont(ofSize: 40.0)
         
@@ -118,7 +119,10 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
         // Dispose of any resources that can be recreated.
     }
     override func viewDidLayoutSubviews() {
-       
+        let variableFontSize : CGFloat = textView1.frame.size.height * 0.15
+        textView1.textAlignment = NSTextAlignment.center
+        textView1.font = UIFont.boldSystemFont(ofSize: variableFontSize)
+
         self.editButton.title = ""
         self.editButton.isEnabled = false
         textView1.layer.cornerRadius = 10
@@ -280,7 +284,7 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
             textCol3.isHidden = true
         }
     }
-       
+    
    
     @IBAction func addButtonOneAction(_ sender: Any) {
         constraintX.constant = 0
