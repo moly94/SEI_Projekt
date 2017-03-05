@@ -10,7 +10,11 @@ import UIKit
 
 class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextViewDelegate{
     
+
     
+    @IBOutlet weak var textCol2: UIButton!
+    @IBOutlet weak var textCol3: UIButton!
+    @IBOutlet weak var textCol1: UIButton!
     
     @IBOutlet weak var popPickConstraintX: NSLayoutConstraint!
     
@@ -95,12 +99,12 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
 
         popupView.layer.cornerRadius = 10
         textView1.textAlignment = NSTextAlignment.center
-        textView1.font = UIFont.boldSystemFont(ofSize: 33.0)
+        textView1.font = UIFont.boldSystemFont(ofSize: 40.0)
         textView2.font = UIFont.boldSystemFont(ofSize: 40.0)
         textView3.font = UIFont.boldSystemFont(ofSize: 40.0)
         
         NotificationCenter.default.addObserver(self, selector: #selector(LayoutOneController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(LayoutOneController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+       NotificationCenter.default.addObserver(self, selector: #selector(LayoutOneController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         
         
@@ -142,12 +146,11 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
         }
 
     }
-    func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y += keyboardSize.height
-            }
-        }
+   func keyboardWillHide(notification: NSNotification) {
+    textCol1.isHidden = false
+    textCol2.isHidden = false
+    textCol3.isHidden = false
+
     }
     
     
@@ -179,6 +182,36 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
        
     }
     
+    @IBAction func textColActionOne(_ sender: Any) {
+        popPickConstraintX.constant = 0
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
+        self.backgroundButton.alpha = 0.5
+        self.saveButton.isEnabled = false
+         whichButton = 5
+    }
+    
+    
+    @IBAction func textColActionTwo(_ sender: Any) {
+        popPickConstraintX.constant = 0
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
+        self.backgroundButton.alpha = 0.5
+        self.saveButton.isEnabled = false
+         whichButton = 6
+    }
+    
+    @IBAction func textColActionThree(_ sender: Any) {
+        popPickConstraintX.constant = 0
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
+        self.backgroundButton.alpha = 0.5
+        self.saveButton.isEnabled = false
+        whichButton = 7
+    }
     
     @IBAction func addColorAction(_ sender: Any) {
         self.saveButton.isEnabled = true
@@ -195,29 +228,59 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
             pickedImage3.backgroundColor = chosenCol.backgroundColor
         }else if whichButton == 4 {
             pickedImage4.backgroundColor = chosenCol.backgroundColor
+        }else if whichButton == 5 {
+            textView1.textColor = chosenCol.backgroundColor
+        }else if whichButton == 6 {
+            textView2.textColor = chosenCol.backgroundColor
+        }else if whichButton == 7 {
+            textView3.textColor = chosenCol.backgroundColor
         }
+
         
     }
     
      internal func textViewDidBeginEditing(_ textView: UITextView) {
         if textView == textView1{
             textView1!.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
+            textCol2.isHidden = false
+            textCol3.isHidden = false
             
         }else if textView == textView2{
              textView2!.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
+            textCol1.isHidden = false
+            textCol3.isHidden = false
             
         }else if textView == textView3{
              textView3!.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
+            textCol1.isHidden = false
+            textCol2.isHidden = false
             
         }
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView == textView3{
+            textCol1.isHidden = false
             textView3!.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
             self.view.frame.origin.y += boardSize
             
+        }else if textView == textView2{
+            textCol2.isHidden = false
+        }else if textView == textView3{
+            textCol3.isHidden = false
+        }
+
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView == textView1{
+        textCol1.isHidden = true
+        }else if textView == textView2{
+            textCol2.isHidden = true
+        }else if textView == textView3{
+            textCol3.isHidden = true
         }
     }
+       
    
     @IBAction func addButtonOneAction(_ sender: Any) {
         constraintX.constant = 0
@@ -330,6 +393,9 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
             self.addButton2.isHidden = true
             self.addButton3.isHidden = true
             self.addButton4.isHidden = true
+            self.textCol1.isHidden = true
+            self.textCol2.isHidden = true
+            self.textCol3.isHidden = true
             isFinnish = true
             textView1!.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
              textView2!.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
@@ -364,6 +430,9 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
         self.addButton2.isHidden = false
         self.addButton3.isHidden = false
         self.addButton4.isHidden = false
+        self.textCol1.isHidden = false
+        self.textCol2.isHidden = false
+        self.textCol3.isHidden = false
         self.editButton.title = ""
         self.editButton.isEnabled = false
         textView1!.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
@@ -373,16 +442,6 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
         textView2.isEditable = true
         textView3.isEditable = true
     }
-    
-    
-    
-    @IBAction func saveButtonAction(_ sender: UIBarButtonItem) {
-        
-        let imageData = UIImageJPEGRepresentation(pickedImage1.image!, 0.6)
-        let compressedJEPGImage = UIImage(data: imageData!)
-        UIImageWriteToSavedPhotosAlbum(compressedJEPGImage!, nil, nil, nil)
-    }
-    
     
     func changeColorOfLabel() {
         chosenCol.backgroundColor = UIColor(red: CGFloat(redCol), green: CGFloat(greenCol), blue: CGFloat(blueCol), alpha: 1.0)
