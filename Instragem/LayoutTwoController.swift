@@ -399,6 +399,14 @@ class LayoutTwoController: UIViewController,UIImagePickerControllerDelegate,UINa
             
         }else if isFinnish{
             screenShotMethod()
+            let alertView = UIAlertController(title: "Your collage was successfully saved!",
+                                              message: "" as String, preferredStyle:.alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alertView.addAction(okAction)
+            self.present(alertView, animated: true, completion: nil)
+            return;
+            
+
         }
         
     }
