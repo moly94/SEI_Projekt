@@ -66,24 +66,25 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
   let arbitraryValue: Int = 30
    var isFinnish = false
     var isValid = false
-    let defaults = UserDefaults.standard
     
     var redCol : Float = 0
     var greenCol : Float = 0
     var blueCol : Float = 0
-
+    var boardSize : CGFloat = 0
+   
     
     
     
     @IBOutlet weak var constraintX: NSLayoutConstraint!
     var whichButton = 0
     override func viewDidLoad() {
-        
-        
-         textView1.delegate = self
-         textView2.delegate = self
-         textView3.delegate = self
         super.viewDidLoad()
+        self.redSlider.value = 0
+        self.greenSlider.value = 0
+        self.blueSlider.value = 0
+        textView1.delegate = self
+        textView2.delegate = self
+        textView3.delegate = self
         pickedImage1.layer.cornerRadius = 10
         pickedImage1.clipsToBounds = true
         pickedImage2.layer.cornerRadius = 10
@@ -98,6 +99,9 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
         textView2.font = UIFont.boldSystemFont(ofSize: 40.0)
         textView3.font = UIFont.boldSystemFont(ofSize: 40.0)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(LayoutOneController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LayoutOneController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
         
         
         
@@ -110,10 +114,7 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
         // Dispose of any resources that can be recreated.
     }
     override func viewDidLayoutSubviews() {
-        configureAddButtonOne()
-        configureAddButtonTwo()
-        configureAddButtonThree()
-        configureAddButtonFour()
+       
         self.editButton.title = ""
         self.editButton.isEnabled = false
         textView1.layer.cornerRadius = 10
@@ -127,6 +128,27 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
 
        
             }
+    func keyboardWillShow(notification: NSNotification) {
+        if textView3.isFirstResponder {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                
+                self.view.frame.origin.y -= keyboardSize.height
+                boardSize = keyboardSize.height
+
+                
+            }
+        }
+        }
+
+    }
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
     
     
     @IBAction func redSliderAction(_ sender: Any) {
@@ -180,10 +202,20 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
      internal func textViewDidBeginEditing(_ textView: UITextView) {
         if textView == textView1{
             textView1!.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
+            
         }else if textView == textView2{
              textView2!.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
+            
         }else if textView == textView3{
              textView3!.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
+            
+        }
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView == textView3{
+            textView3!.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
+            self.view.frame.origin.y += boardSize
+            
         }
     }
    
@@ -317,7 +349,7 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
     
     @IBAction func editButtonAction(_ sender: Any) {
         
-        self.saveButton.title = "finnish"
+        self.saveButton.title = "finish"
         self.saveButton.tintColor = UIColor.black
         isFinnish = false
         self.addButton1.isHidden = false
@@ -364,6 +396,9 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
         blueLabel.text = "Blue: \(roundedBlue)"
     }
 
+    @IBAction func backButtonAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         if whichButton == 1{
@@ -384,6 +419,7 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
        
         self.dismiss(animated: true, completion: nil);
     }
+    
     func configureAddButtonOne(){
         addButton1.layer.cornerRadius = 0.5 * addButton1.bounds.size.width
     
@@ -410,7 +446,6 @@ class LayoutOneController: UIViewController,UIImagePickerControllerDelegate,UINa
         UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
     }
     
- 
 }
 
 

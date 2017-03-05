@@ -76,7 +76,7 @@ class LayoutTwoController: UIViewController,UIImagePickerControllerDelegate,UINa
     var redCol : Float = 0
     var greenCol : Float = 0
     var blueCol : Float = 0
-    
+    var boardSize : CGFloat = 0
     
     
     var whichButton = 0
@@ -88,6 +88,10 @@ class LayoutTwoController: UIViewController,UIImagePickerControllerDelegate,UINa
         textView3.delegate = self
         textView4.delegate = self
         super.viewDidLoad()
+        self.redSlider.value = 0
+        self.greenSlider.value = 0
+        self.blueSlider.value = 0
+
         pickedImage1.layer.cornerRadius = 10
         pickedImage1.clipsToBounds = true
         pickedImage2.layer.cornerRadius = 10
@@ -105,7 +109,8 @@ class LayoutTwoController: UIViewController,UIImagePickerControllerDelegate,UINa
         textView2.font = UIFont.boldSystemFont(ofSize: 40.0)
         textView3.font = UIFont.boldSystemFont(ofSize: 40.0)
         textView4.font = UIFont.boldSystemFont(ofSize: 40.0)
-       
+        NotificationCenter.default.addObserver(self, selector: #selector(LayoutOneController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LayoutOneController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         
         
@@ -130,6 +135,27 @@ class LayoutTwoController: UIViewController,UIImagePickerControllerDelegate,UINa
         
         
     }
+    func keyboardWillShow(notification: NSNotification) {
+        if textView4.isFirstResponder {
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+                if self.view.frame.origin.y == 0{
+                    
+                    self.view.frame.origin.y -= keyboardSize.height
+                    boardSize = keyboardSize.height
+                    
+                }
+            }
+        }
+        
+    }
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
+
     
     
  
@@ -193,14 +219,25 @@ class LayoutTwoController: UIViewController,UIImagePickerControllerDelegate,UINa
     internal func textViewDidBeginEditing(_ textView: UITextView) {
         if textView == textView1{
             textView1!.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
+
         }else if textView == textView2{
             textView2!.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
+          
         }else if textView == textView3{
             textView3!.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
         }else if textView == textView4{
             textView4!.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
         }
 
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView == self.textView4{
+            self.view.frame.origin.y += boardSize
+            textView4!.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
+            UIView.animate(withDuration: 0.9, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }
     }
     
   
@@ -369,7 +406,7 @@ class LayoutTwoController: UIViewController,UIImagePickerControllerDelegate,UINa
     
     
     @IBAction func editButtonAction(_ sender: Any) {
-        self.saveButton.title = "finnish"
+        self.saveButton.title = "finish"
         self.saveButton.tintColor = UIColor.black
         isFinnish = false
         self.addButton1.isHidden = false
@@ -450,6 +487,9 @@ class LayoutTwoController: UIViewController,UIImagePickerControllerDelegate,UINa
         self.dismiss(animated: true, completion: nil);
     }
 
+    @IBAction func backButtonAction(_ sender: Any) {
+       self.dismiss(animated: true, completion: nil)
+    }
     func configureViews(){
         pickedImage1.layer.cornerRadius = 0.5 * pickedImage1.bounds.size.width
         pickedImage2.layer.cornerRadius = 0.5 * pickedImage2.bounds.size.width
