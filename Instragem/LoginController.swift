@@ -21,11 +21,16 @@ class LoginController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     
+ 
+    
+    @IBOutlet weak var txtUsername: UITextField!
+    
+    
+    @IBOutlet weak var txtPassword: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a 
-        
-        let hasLogin = UserDefaults.standard.bool(forKey: "hasLoginKey")
+        // Do any additional setup after loading the view, typically from a
+                let hasLogin = UserDefaults.standard.bool(forKey: "hasLoginKey")
         
         if hasLogin {
             loginButton.setTitle("Login", for: UIControlState.normal)
@@ -38,15 +43,15 @@ class LoginController: UIViewController {
         if let storedUsername = UserDefaults.standard.value(forKey: "username") as? String {
             txtUsername.text = storedUsername as String
         }
-    
+        
     }
-    
-    //test
-    
-    @IBOutlet weak var txtUsername: UITextField!
-    
-    
-    @IBOutlet weak var txtPassword: UITextField!
+    override func viewDidLayoutSubviews() {
+        if txtPassword.hasText {
+            txtPassword.text = ""
+        }
+
+    }
+
     
     @IBAction func btnLogin(_ sender: AnyObject) {
         //username or password empty, display alert

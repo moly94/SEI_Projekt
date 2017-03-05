@@ -84,17 +84,17 @@
                         <outlet property="loginButton" destination="Dq9-pH-duZ" id="kej-Rw-hyK"/>
                         <outlet property="txtPassword" destination="kZG-5I-83W" id="1wI-xv-mQg"/>
                         <outlet property="txtUsername" destination="qFW-5J-hFC" id="mc1-qS-4pL"/>
-                        <segue destination="HAf-dI-uic" kind="show" identifier="showMainMenu" id="NZl-pP-5cS"/>
+                        <segue destination="HAf-dI-uic" kind="presentation" identifier="showMainMenu" modalTransitionStyle="crossDissolve" id="NZl-pP-5cS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l7A-kz-9IV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2320.3125" y="-141.43484626647142"/>
         </scene>
-        <!--View Controller-->
+        <!--Overview Controller-->
         <scene sceneID="Gsn-Df-851">
             <objects>
-                <viewController id="HAf-dI-uic" sceneMemberID="viewController">
+                <viewController id="HAf-dI-uic" customClass="OverviewController" customModule="Instragem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="s7W-Zq-vkZ"/>
                         <viewControllerLayoutGuide type="bottom" id="NJe-Le-bnh"/>
@@ -107,87 +107,63 @@
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="2hb-kl-8kB"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="LKc-3N-1qc"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Instragem" id="Iws-Zp-H1f">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="PNx-Wk-B1A">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="12R-Gp-LRO">
-                                                <rect key="frame" x="20" y="-28" width="100" height="100"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="NsT-T0-0j1"/>
-                                                    <constraint firstAttribute="height" constant="100" id="dYm-S2-V4O"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                <state key="normal" title="Logout"/>
-                                                <connections>
-                                                    <segue destination="g7o-qb-z3Z" kind="show" id="xar-qM-WfB"/>
-                                                </connections>
-                                            </button>
+                                    <navigationItem title="Title" id="V97-Lx-p6L">
+                                        <barButtonItem key="leftBarButtonItem" title="logout" id="rdF-4u-gXV">
+                                            <connections>
+                                                <action selector="logoutButtonAction:" destination="HAf-dI-uic" id="IJp-0Z-j1b"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aus-AK-5QR">
-                                <rect key="frame" x="15" y="363" width="739" height="297"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SIJ-ja-Ksu">
+                                <rect key="frame" x="0.0" y="44" width="768" height="980"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SIJ-ja-Ksu">
-                                        <rect key="frame" x="-669" y="0.0" width="2076" height="297"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pw-Da-ZcP">
-                                                <rect key="frame" x="1000" y="8" width="228" height="273"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="1" green="0.29250090649999999" blue="0.33628361210000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal" title="Button1"/>
-                                                <connections>
-                                                    <segue destination="BYZ-38-t0r" kind="presentation" modalTransitionStyle="crossDissolve" id="d7z-8H-kFF"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acj-Sv-YRZ">
-                                                <rect key="frame" x="759" y="6" width="221" height="276"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="1" green="0.29250090649999999" blue="0.33628361210000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                                <state key="normal" title="Button2"/>
-                                                <connections>
-                                                    <segue destination="x5R-Hl-qxK" kind="presentation" modalTransitionStyle="crossDissolve" id="f0q-RL-8vg"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRZ-aZ-CFt">
-                                                <rect key="frame" x="1254" y="6" width="229" height="274"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="1" green="0.29250090649999999" blue="0.33628361210000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                <state key="normal" title="Button3"/>
-                                                <connections>
-                                                    <segue destination="qhK-GS-6r0" kind="presentation" modalTransitionStyle="crossDissolve" id="VMc-ZO-jjO"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="297" id="2Y6-P3-jK3"/>
-                                            <constraint firstAttribute="width" constant="2076" id="im1-Jo-d1w"/>
-                                        </constraints>
-                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yDc-HV-ZhX">
+                                        <rect key="frame" x="29" y="327" width="198" height="248"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.29250090649999999" blue="0.33628361210000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Button1"/>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="presentation" modalTransitionStyle="crossDissolve" id="LbH-IG-Xd4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeM-ds-Vvd">
+                                        <rect key="frame" x="285" y="327" width="198" height="248"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.29250090649999999" blue="0.33628361210000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Button2"/>
+                                        <connections>
+                                            <segue destination="x5R-Hl-qxK" kind="presentation" modalTransitionStyle="crossDissolve" id="cIh-nh-7B5"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p8Q-QL-x0c">
+                                        <rect key="frame" x="533" y="327" width="198" height="248"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.29250090649999999" blue="0.33628361210000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Button3"/>
+                                        <connections>
+                                            <segue destination="qhK-GS-6r0" kind="presentation" modalTransitionStyle="crossDissolve" id="Jzh-u3-FKh"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="SIJ-ja-Ksu" firstAttribute="leading" secondItem="aus-AK-5QR" secondAttribute="leading" constant="-669" id="0YP-3Q-2Kc"/>
-                                    <constraint firstItem="SIJ-ja-Ksu" firstAttribute="centerY" secondItem="aus-AK-5QR" secondAttribute="centerY" id="Hc1-Fg-I8j"/>
-                                    <constraint firstItem="SIJ-ja-Ksu" firstAttribute="top" secondItem="aus-AK-5QR" secondAttribute="top" id="TKw-Rv-8bR"/>
-                                    <constraint firstAttribute="trailing" secondItem="SIJ-ja-Ksu" secondAttribute="trailing" constant="-668" id="V1F-BE-p3Y"/>
-                                    <constraint firstItem="SIJ-ja-Ksu" firstAttribute="centerX" secondItem="aus-AK-5QR" secondAttribute="centerX" id="hfd-tB-aZc"/>
-                                    <constraint firstAttribute="bottom" secondItem="SIJ-ja-Ksu" secondAttribute="bottom" id="juH-fh-G6W"/>
-                                </constraints>
-                            </scrollView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="j7j-fK-7QJ" firstAttribute="top" secondItem="L0G-V9-wly" secondAttribute="top" id="5cC-ny-ABr"/>
+                            <constraint firstAttribute="trailing" secondItem="j7j-fK-7QJ" secondAttribute="trailing" id="Evu-oH-KLu"/>
                             <constraint firstItem="j7j-fK-7QJ" firstAttribute="top" secondItem="L0G-V9-wly" secondAttribute="top" id="G06-Yg-DcR"/>
-                            <constraint firstItem="SIJ-ja-Ksu" firstAttribute="centerY" secondItem="L0G-V9-wly" secondAttribute="centerY" id="WJu-9b-9Q9"/>
+                            <constraint firstItem="NJe-Le-bnh" firstAttribute="top" secondItem="SIJ-ja-Ksu" secondAttribute="bottom" id="Kcl-zE-aOv"/>
+                            <constraint firstItem="SIJ-ja-Ksu" firstAttribute="leading" secondItem="L0G-V9-wly" secondAttribute="leading" id="Vig-YT-ma5"/>
+                            <constraint firstAttribute="trailing" secondItem="SIJ-ja-Ksu" secondAttribute="trailing" id="Xq7-Tu-J6M"/>
+                            <constraint firstItem="j7j-fK-7QJ" firstAttribute="leading" secondItem="L0G-V9-wly" secondAttribute="leading" id="aWt-M6-EIP"/>
                             <constraint firstAttribute="trailing" secondItem="j7j-fK-7QJ" secondAttribute="trailing" id="mip-ds-C32"/>
-                            <constraint firstItem="SIJ-ja-Ksu" firstAttribute="centerX" secondItem="L0G-V9-wly" secondAttribute="centerX" id="vZB-6L-YMa"/>
+                            <constraint firstItem="SIJ-ja-Ksu" firstAttribute="top" secondItem="L0G-V9-wly" secondAttribute="top" constant="44" id="uPp-RS-1mq"/>
                             <constraint firstItem="j7j-fK-7QJ" firstAttribute="leading" secondItem="L0G-V9-wly" secondAttribute="leading" id="zqu-r1-2dF"/>
                         </constraints>
                     </view>
